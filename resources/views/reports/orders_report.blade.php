@@ -146,7 +146,7 @@
                                         <td>{{ $order->order_number }} </td>
                                         <td>{{ $order->order_Date }}</td>
                                         <td>{{ $order->Due_Date }}</td>
-                                        <td>{{ $order->service }}</td>
+                                        <td>{{ $order->service->name }}</td>
                                         <td>
                                         <div class="dropdown">
                                                 <button aria-expanded="false" aria-haspopup="true" class="btn ripple btn-primary"

@@ -114,7 +114,7 @@
                                 <td>{{ $order->order_number }} </td>
                                 <td>{{ $order->order_Date }}</td>
                                 <td>{{ $order->Due_Date }}</td>
-                                <td>{{ $order->service }}</td>
+                                <td>{{ $order->service->name }}</td>
                             </tr>
                             @endforeach
                         </tbody>

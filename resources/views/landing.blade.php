@@ -152,7 +152,7 @@
                 <!-- Start Google Map -->
                 <div class="col-md-6">
                 <!-- Start Map -->
-                <img src="assets\img\map.jpeg">
+                <img src="assets2\img\map.jpeg">
                 <!-- End Map -->
                 </div>
                 <!-- End Google Map -->
