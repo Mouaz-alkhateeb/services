@@ -95,7 +95,7 @@
 						<div class="card">
 							<div class="card-body iconfont text-right">
 								<div class="d-flex justify-content-between">
-									<h4 class="card-title mb-3"> عدد الطلبات المنفذة</h4>
+									<h4 class="card-title mb-3">  الطلبات المنفذة</h4>
 									<i class="mdi mdi-dots-vertical"></i>
 								</div>
 								<div class="d-flex mb-0">

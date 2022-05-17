@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\User;
+use App\User;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Socialite\Facades\Socialite;
 
@@ -43,7 +43,7 @@ class SocialiteController extends Controller
             'password' => encrypt('123456dummy'),
             'avatar' => $data->avatar
         ]);
-        $user->assignRole('usr');//عطيت دور مستخدم اذا لما عمل لوغ ان المستخدم وما كان موجود بالداتا بيز
+        $user->assignRole('user');//عطيت دور مستخدم اذا لما عمل لوغ ان المستخدم وما كان موجود بالداتا بيز
         return $user;
     }
 }
