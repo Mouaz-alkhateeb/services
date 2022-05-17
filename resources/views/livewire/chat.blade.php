@@ -8,7 +8,9 @@
 					<div class="px-4 d-none d-md-block">
 						<div class="d-flex align-items-center">
 							<div class="flex-grow-1">
+                           
 								<input type="text" class="form-control my-3" placeholder="بحث...">
+                               
 							</div>
 						</div>
 					</div>
@@ -21,18 +23,14 @@
                         @endphp
 
 						<div class="d-flex align-items-start">
-                        <img src="{{ asset('assets/img/faces/1.png') }}" class="rounded-circle mr-1"  width="40" height="40">
+                        <img src="{{ asset('assets/img/faces/1.jpg') }}" class="rounded-circle mr-1"  width="40" height="40">
 							<div class="flex-grow-1 ml-3">
 								<strong style="text-transform:capitalize">{{ $item->name}}
                                     @if ($notifications->count() > 0)
                                     <small><span class="badge badge-danger text-light float-right mt-2">{{ $notifications->count() }}</span></small>
                                     @endif
                                 </strong>
-                                @if (Cache::has('is_online' . $item->id))
-                                <div class="small"><span class="fa fa-circle chat-online"></span> Online</div>
-                                @else
-                                <div class="small">Last seen: {{ \Carbon\Carbon::parse($item->last_seen)->diffForHumans() }}</div>
-                                @endif
+                               
 
 							</div>
 
@@ -46,18 +44,14 @@
 					<div class="py-2 px-4 border-bottom d-none d-lg-block">
 						<div class="d-flex align-items-center py-1">
 							<div class="position-relative">
-                            <img src="{{ asset('assets/img/faces/1.png') }}" class="rounded-circle mr-1"  width="40" height="40">
+                            <img src="{{ asset('assets/img/faces/1.jpg') }}" class="rounded-circle mr-1"  width="40" height="40">
 							</div>
 
 							<div class="flex-grow-1 pl-3">
                                 <div class="row" style="width: 50%">
                                     <div class="col-10">
                                         <strong style="text-transform: capitalize">{{ $current->name}}</strong>
-                                        @if (Cache::has('is_online' . $current->id))
-                                        <div class="text-muted small"><i class="fa fa-circle chat-online"></i> <small>Online</small></div>
-                                        @else
-                                        <div class="text-muted small"><i class="fa fa-circle chat-offline"></i> <small>Last seen: {{ \Carbon\Carbon::parse($current->last_seen)->diffForHumans() }} </div>
-                                        @endif
+                                       
                                     </div>
                                     <span class="btn-group-vertical">
                                       
@@ -91,7 +85,7 @@
                                     </div>
                                     @else
                                     <div>
-                                    <img src="{{ asset('assets/img/faces/2.png') }}" class="rounded-circle mr-1"  width="40" height="40">
+                                    <img src="{{ asset('assets/img/faces/2.jpg') }}" class="rounded-circle mr-1"  width="40" height="40">
                                         <div class="text-muted small text-nowrap mt-2">{{ date('h:i a', strtotime($chat->created_at)) }}</div>
                                     </div>
                                     <div class="flex-shrink-1 bg-light rounded py-2 px-3 mr-3" style="min-width: 100px">
@@ -112,7 +106,7 @@
                                     </div>
                                     @else
                                     <div>
-                                    <img src="{{ asset('assets/img/faces/1.png') }}" class="rounded-circle mr-1"  width="40" height="40">
+                                    <img src="{{ asset('assets/img/faces/1.jpg') }}" class="rounded-circle mr-1"  width="40" height="40">
                                         <div class="text-muted small text-nowrap mt-2">{{ date('h:i a', strtotime($chat->created_at)) }}</div>
                                     </div>
                                     <div class="flex-shrink-1 bg-light rounded py-2 pb-0 px-3 ml-3" style="min-width: 100px">
@@ -153,18 +147,25 @@
                     <div class="py-2 px-4 border-bottom d-none d-lg-block">
 						<div class="d-flex align-items-center py-1">
 							<div class="position-relative">
-                            <img src="{{ asset('assets/img/faces/1.png') }}" class="rounded-circle mr-1"  width="40" height="40">
+
+                            <img src="{{ asset('assets/img/faces/2.jpg') }}" class="rounded-circle mr-1"  width="40" height="40">
 							</div>
 							<div class="flex-grow-1 pl-3">
 								<strong style="text-transform: capitalize">{{ Auth::user()->name }}</strong>
-								<div class="text-muted small"><em>إختر مستخدم لبدء المحادثة</em></div>
+								<div class="text-muted small">إختر مستخدم لبدء المحادثة</div>
 							</div>
 						</div>
 					</div>
                     @endif
 
 				</div>
+                
 			</div>
+            
 		</div>
+        <div class="d-flex justify-content-center">
+          <a wire:click="back1" type="button" class="text-center form-control my-3"  title="backto"  style=" background-color: #ccccb3 !important; width : 30% !important"> عودة للصفحة الرئيسية</a>     
+        </div>
+       
 	</div>
 </div>

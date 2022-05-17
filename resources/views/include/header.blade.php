@@ -23,10 +23,18 @@
         <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
         <li class="dropdown"><a href="#">GO START <i class="bi bi-chevron-down"></i></a>
             <ul>
-            <button><li><a  href="{{ route('login') }}">LOG IN</a></li></button>
-            <button><li><a  href="{{ route('register') }}">SIGN UP</a></li></button>
+                <li><a  href="{{ route('login') }}">تسجيل الدخول</a></li>
+                <li><a  href="{{ route('register') }}">انشاء حساب</a></li>
+                <li><a  href="{{ route('logout') }}" 
+                onclick="event.preventDefault();document.getElementById('logout-form').submit();">تسجيل الخروج</a></li>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                     @csrf
+                </form>
             </ul>
         </li>
+            @can('لوحة التحكم')
+                    <li><a class="nav-link scrollto" href="{{ url('/' . $page='dashboard') }}">لوحة التحكم</a></li>
+            @endcan
     </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
     </nav>

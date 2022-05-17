@@ -10,6 +10,11 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use App\Exports\ordersExport;
+use App\Notifications\Add_order;
+use App\services;
+use App\User;
+use Illuminate\Support\Facades\Notification;
+use Illuminate\Support\Str;
 use Maatwebsite\Excel\Facades\Excel;
 
 class OrdersController extends Controller
@@ -34,7 +39,8 @@ class OrdersController extends Controller
     public function create()
     {
         $sections = sections::whereNotNull('parent_id')->get();
-        return view('orders.add_order',compact('sections'));
+        $services = services::all();
+        return view('orders.add_order',compact('sections','services'));
     }
 
     /**
@@ -45,15 +51,16 @@ class OrdersController extends Controller
      */
     public function store(Request $request)
     {
+        $uuid = Str::uuid()->toString();
         orders::create([
-            'order_number' => $request->order_number,
+            'order_number' => $uuid,
             'order_Date' => $request->order_Date,  
-            'Due_Date' => $request->Due_Date,            
-            'service' => $request->service,
+            'Due_Date' => $request->Due_Date, 
+            'service_id' => $request->service_id,  
             'section_id' => $request->Section,
             'Amount_collection' => $request->Amount_collection,
-            'ServiceStatus' => 'غير منفذ',
-            'Value_ServiceStatus' => 2,
+            'OrderStatus' => 'غير منفذ',
+            'Value_OrderStatus' => 2,
             'PaymentStatus' => 'غير مدفوع',
             'Value_PaymentStatus' => 2,
             'user' => (Auth::user()->name),
@@ -77,6 +84,9 @@ class OrdersController extends Controller
             $imageName = $request->pic->getClientOriginalName();
             $request->pic->move(public_path('Attachments/' . $order_number), $imageName);
         }
+        $user = User::get();  
+        $orders=orders::latest()->first();
+        Notification::send($user, new Add_order($orders));
         session()->flash('Add', 'تم اضافة الطلب بنجاح');
         return redirect('/orders');  
     }
@@ -164,11 +174,17 @@ class OrdersController extends Controller
 
 
     }
+
+
+
     public function getservices($id)
     {
-        $services = DB::table("services")->where('section_id', $id)->pluck('name','id');
-        return json_encode($services);
+        $services = DB::table("services")->where('section_id', $id)->pluck('name','id');      
+        return json_encode($services);  
     }
+
+
+
     public function destroyfile(Request $request)
     {
         $order = Attachments_order::findOrFail($request->id_file);
@@ -200,13 +216,13 @@ class OrdersController extends Controller
     {
         $orders = orders::findOrFail($id);
 
-        if ($request->PaymentStatus === 'مدفوع' && $request->ServiceStatus === 'منفذ') {
+        if ($request->PaymentStatus === 'مدفوع' && $request->OrderStatus === 'منفذ') {
 
             $orders->update([
                 'Value_PaymentStatus' => 1,
-                'Value_ServiceStatus' => 1,
+                'Value_OrderStatus' => 1,
                 'PaymentStatus' => $request->PaymentStatus,
-                'ServiceStatus' => $request->ServiceStatus,
+                'OrderStatus' => $request->OrderStatus,
                 'Payment_Date' => $request->Payment_Date,
                 
             ]);
@@ -214,9 +230,9 @@ class OrdersController extends Controller
         else {
             $orders->update([
                 'Value_PaymentStatus' => 3,
-                'Value_ServiceStatus' => 3,
+                'Value_OrderStatus' => 3,
                 'PaymentStatus' => $request->PaymentStatus,
-                'ServiceStatus' => $request->ServiceStatus,
+                'OrderStatus' => $request->OrderStatus,
                 'Payment_Date' => $request->Payment_Date,
             ]);
            
@@ -227,17 +243,17 @@ class OrdersController extends Controller
     }
     public function Fullfilled_Orders()
     {
-       $orders=orders::where('Value_ServiceStatus',1)->get();
+       $orders=orders::where('Value_OrderStatus',1)->get();
        return view('orders.Fullfilled_Orders',compact('orders'));
     }
     public function UnFullfilled_Orders()
     {
-       $orders=orders::where('Value_ServiceStatus',2)->get();
+       $orders=orders::where('Value_OrderStatus',2)->get();
        return view('orders.UnFullfilled_Orders',compact('orders'));
     }
     public function Partially_Fullfilled_Orders()
     {
-       $orders=orders::where('Value_ServiceStatus',3)->get();
+       $orders=orders::where('Value_OrderStatus',3)->get();
        return view('orders.Partially_Fullfilled_Orders',compact('orders'));
     }
     public function export()

@@ -51,21 +51,12 @@
 
                         {{-- 2 --}}
                         <div class="row">
-                            <div class="col">
-                                <label for="inputName" class="control-label">القسم</label>
-                                <select name="Section" class="form-control SlectBox" onclick="console.log($(this).val())"
-                                    onchange="console.log('change is firing')" readonly>
-                                    <!--placeholder-->
-                                    <option value=" {{ $orders->section->id }}">
-                                        {{ $orders->section->name }}
-                                    </option>
-                                </select>
-                            </div>
+                           
 
                             <div class="col">
                                 <label for="inputName" class="control-label">الخدمة</label>
                                 <select id="service" name="service" class="form-control" readonly>
-                                    <option value="{{ $orders->service }}"> {{ $orders->service }}</option>
+                                    <option value="{{ $orders->service }}"> {{ $orders->service->name }}</option>
                                 </select>
                             </div>
 
@@ -97,7 +88,7 @@
 
                             <div class="col">
                                 <label for="exampleTextarea">حالة الطلب</label>
-                                <select class="form-control" id="ServiceStatus" name="ServiceStatus" required>
+                                <select class="form-control" id="OrderStatus" name="OrderStatus" required>
                                     <option selected="true" disabled="disabled">-- حدد حالة الطلب --</option>
                                     <option value="منفذ">منفذ</option>
                                     <option value="قيد التنفيذ ">قيد التنفيذ  </option>

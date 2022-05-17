@@ -95,9 +95,13 @@ class Chat extends Component
     public function back ()
     {
     
-        return redirect('home');
+        return redirect('chat');
     }
-
+    public function back1 ()
+    {
+    
+        return redirect('dashboard');
+    }
     /**
      * Clear all Chats With Current Useer
      *

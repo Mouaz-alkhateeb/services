@@ -90,22 +90,22 @@
 
                                                         <tr>
                                                             <th scope="row">الخدمة</th>
-                                                            <td>{{ $order->service }}</td>
+                                                            <td>{{ $order->service->name }}</td>
                                                             <th scope="row">المستفيد </th>                                                       
                                                             <td>{{ $order->user }}</td>
                                                             <th scope="row">حالة الطلب </th>
 
-                                                            @if ($order->Value_ServiceStatus == 1)
+                                                            @if ($order->Value_OrderStatus == 1)
                                                                 <td><span
-                                                                        class="badge badge-pill badge-success">{{ $order->ServiceStatus }}</span>
+                                                                        class="badge badge-pill badge-success">{{ $order->OrderStatus }}</span>
                                                                 </td>
-                                                            @elseif($order->Value_ServiceStatus ==2)
+                                                            @elseif($order->Value_OrderStatus ==2)
                                                                 <td><span
-                                                                        class="badge badge-pill badge-danger">{{ $order->ServiceStatus }}</span>
+                                                                        class="badge badge-pill badge-danger">{{ $order->OrderStatus }}</span>
                                                                 </td>
                                                             @else
                                                                 <td><span
-                                                                        class="badge badge-pill badge-warning">{{ $order->ServiceStatus }}</span>
+                                                                        class="badge badge-pill badge-warning">{{ $order->OrderStatus }}</span>
                                                                 </td>
                                                             @endif
                                                             <th scope="row">حالة الدفع </th>

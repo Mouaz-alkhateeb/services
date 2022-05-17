@@ -19,13 +19,13 @@ class CreateServicesTable extends Migration
             $table->text('description')->nullable();
             $table->unsignedBigInteger('section_id');
             $table->foreign('section_id')->references('id')->on('sections')->onDelete('cascade');
-            $table->string('user',300);
+            $table->unsignedBigInteger('service_provider_id');
+            $table->foreign('service_provider_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('status', 50);
             $table->integer('Value_status');  
             $table->timestamps();
         });
     }
-
     /**
      * Reverse the migrations.
      *

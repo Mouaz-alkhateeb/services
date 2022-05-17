@@ -90,30 +90,28 @@
                         <table id="example1" class="table key-buttons text-md-nowrap" data-page-length='50'style="text-align: center">
                             <thead>
                                 <tr>
-                                    <th class="wd-15p border-bottom-0">#</th>
-                                    <th class="wd-15p border-bottom-0">رقم الطلب  </th>
+                                   
+                                   <th class="wd-15p border-bottom-0">رقم الطلب  </th>
                                     <th class="wd-20p border-bottom-0">تاريخ الطلب </th>
                                     <th class="wd-15p border-bottom-0">تاريخ التسليم</th>
                                     <th class="wd-15p border-bottom-0"> القسم </th>
-                                    <th class="wd-20p border-bottom-0">الخدمة </th>                                      
+                                    <th class="wd-20p border-bottom-0">الخدمة </th>            
+                                    <th class="wd-20p border-bottom-0">حالةالخدمة </th>                                      
                                     <th class="wd-15p border-bottom-0"> الإجراءات</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @php
-                                $i = 0;
-                                @endphp
+                              
                                 @foreach ($orders as $order)
-                                    @php
-                                    $i++;
-                                    @endphp
+                                   
                                     <tr>
-                                        <td>{{ $i }}</td>
-                                        <td>{{ $order->order_number }} </td>
+                                     
+                                       <td>{{ $order->order_number }} </td>
                                         <td>{{ $order->order_Date }}</td>
                                         <td>{{ $order->Due_Date }}</td>
                                         <td>{{ $order->section->name }}</td>
-                                        <td>{{ $order->service }}</td>
+                                        <td>{{ $order->service->name}}</td>
+                                        <td>{{ $order->OrderStatus}}</td>
                                         <td>
                                         <div class="dropdown">
                                                 <button aria-expanded="false" aria-haspopup="true" class="btn ripple btn-primary"

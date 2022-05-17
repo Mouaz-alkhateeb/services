@@ -11,4 +11,5 @@ class sections extends Model
     {
     return $this->belongsTo('App\sections');
     }
+   
 }

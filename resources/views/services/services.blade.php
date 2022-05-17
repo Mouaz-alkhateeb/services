@@ -101,12 +101,13 @@
                             <tbody>
                                 <?php $i = 0; ?>
                                 @foreach ($services as $service)
+                              
                                     <?php $i++; ?>
                                     <tr>
                                         <td>{{ $i }}</td>
                                         <td>{{ $service->name }}</td>
                                         <td>{{ $service->section->name }}</td>
-                                        <td>{{ $service->user }}</td>
+                                        <td>{{ $service->provider->name }}</td>
                                         <td>{{ $service->status }}</td>
                                         <td>{{ $service->description }}</td>
                                         <td>
@@ -164,7 +165,16 @@
                                     <option value="{{ $section->id }}">{{ $section->name }}</option>
                                 @endforeach
                             </select>
-
+                            <br>
+                            <label class="my-1 mr-2" for="inlineFormCustomSelectPref"> مقدمي الخدمات   </label>
+							<select name="provider_id" id="provider_id" class="form-control " required>
+								<!--placeholder-->
+								<option value="" selected disabled>--حدد الاسم-- </option>
+									@foreach ($providers as $user)
+										<option value="{{ $user->id }}"> {{ $user->name }}</option>
+									@endforeach
+							</select>
+                            <br>
                             <div class="form-group">
                                 <label for="exampleFormControlTextarea1">ملاحظات</label>
                                 <textarea class="form-control" id="description" name="description" rows="3"></textarea>

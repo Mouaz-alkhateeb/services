@@ -16,16 +16,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 Route::get('/','FrontController@GetTemp');
-
 Route::get('/login', function () {
     return view('auth.login');
 });
 Route::get('/register', function () {
     return view('auth.register');
 });
-
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/dashboard', 'AdminController@index')->name('dashboard');
+Route::get('/landing', 'AdminController@index2')->name('landing');
 Route::get('/chat', 'HomeController@index2')->name('chat');
 Route::get('/user', 'UserController@index2')->name('user')->middleware('PreventBackHistory');
 Route::get('/admin', 'AdminController@index')->name('admin')->middleware('PreventBackHistory');
@@ -54,6 +54,14 @@ Route::get('/Partially_Fullfilled_Orders', 'OrdersController@Partially_Fullfille
 Route::get('/UnFullfilled_Orders', 'OrdersController@UnFullfilled_Orders');
 Route::get('export_orders', 'OrdersController@export');
 Route::get('MarkAsReadAll', 'ServicesController@MarkAsReadAll');
+Route::get('orders_report', 'OrdersReportController@index'); 
+Route::post('search_orders', 'OrdersReportController@search_orders');   
+Route::get('profits_report', 'ProfitsReportController@index');   
+Route::post('search_profits', 'ProfitsReportController@search_profits');   
+Route::get('customers_report', 'CustomersReportController@index'); 
+Route::post('search_customers', 'CustomersReportController@search_customers'); 
+//Route::get('/provider/{id}', 'CustomersReportController@getservices');
+
 Route::group(['middleware' => ['auth']], function() {
     Route::resource('roles','RoleController');
     Route::resource('users','UserController');
@@ -61,7 +69,7 @@ Route::group(['middleware' => ['auth']], function() {
     });
 
 
-/////front end////
+
 
 
 Route::get('/{page}', 'AdminController@index');

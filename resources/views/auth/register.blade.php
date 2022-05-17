@@ -78,7 +78,7 @@
                             <header>مرحبا بكم</header>
 
                             <p>منصة تتيح لأصحاب المشاريع والشركات التعاقد مع مقدمين خدمات محترفين </p>
-                            <input type="button" class="butt_out" value="Learn More" />
+                            <input type="button" class="butt_out" value="لمعرفة المزيد" />
                         </div>
 
                     </div>

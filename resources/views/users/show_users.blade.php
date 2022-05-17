@@ -93,14 +93,7 @@
 										</tbody>
 									</table>
 								</div>
-								<ul class="pagination mt-4 mb-0 float-left">
-									<li class="page-item page-prev disabled">
-										<a class="page-link" href="#" tabindex="-1">السابق</a>
-									</li>
-									<li class="page-item page-next">
-										<a class="page-link" href="#">التالي</a>
-									</li>
-								</ul>
+								
 							</div>
 						</div>
 					</div>

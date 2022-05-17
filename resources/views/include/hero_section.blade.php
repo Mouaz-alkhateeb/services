@@ -31,7 +31,7 @@
                 <div class="container">
                     <p class="animate__animated animate__fadeInDown">in<h1 class="text-primary"><dt>khadamat</dt></h1></p>
                     <p class="animate__animated animate__fadeInUp">You can easily find any service you want</p>
-                    <a href="register" class="btn-get-started scrollto animate__animated animate__fadeInUp">Get Started</a>
+                    <a href="{{ route('register') }}" class="btn-get-started scrollto animate__animated animate__fadeInUp">Get Started</a>
                 </div>
                 </div>
             </div>

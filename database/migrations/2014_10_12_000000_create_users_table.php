@@ -18,7 +18,7 @@ public function up()
         $table->string('password');
         $table->string('provider_id')->nullable();
         $table->string('avatar')->nullable();
-        $table->text('roles_name')->default('["user"]');
+        $table->text('roles_name')->default('["customer"]');
         $table->string('status')->default('غير نشط');
         $table->timestamp('last_seen')->nullable();
         $table->rememberToken();

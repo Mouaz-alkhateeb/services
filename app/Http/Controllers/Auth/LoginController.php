@@ -38,9 +38,10 @@ class LoginController extends Controller
         if($user -> hasRole('owner')){
             return redirect('/admin');
         }
-        if($user -> hasRole('user')){
+        if($user -> hasRole('customer')){
             return redirect('/user');
         }
+        
     }
     public function __construct()
     {

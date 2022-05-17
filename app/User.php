@@ -38,4 +38,8 @@ protected $fillable = [
     {
         return $this->hasOne('App\Friend', 'friend', 'id');
     }
+    public function services()
+    {
+        return $this->hasMany('services');
+    }
     }

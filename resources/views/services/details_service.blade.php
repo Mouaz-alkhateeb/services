@@ -85,7 +85,7 @@
 
                                                         <tr>
                                                             <th scope="row">اسم مقدم الخدمة</th>                                                       
-                                                            <td>{{ $services->user }}</td>
+                                                            <td>{{ $services->provider->name }}</td>
                                                             <th scope="row">حالة الخدمة </th>
 
                                                             @if ($services->Value_status == 1)
@@ -102,6 +102,7 @@
                                                         <tr>
                                                             <th scope="row">ملاحظات</th>
                                                             <td>{{ $services->note }}</td>
+                                                        @can('قبول ورفض الخدمات')
                                                             <th scope="row">إجراءات الأدمن</th>
                                                             <td>
                                                                     <a  class="btn btn-outline-success btn-sm " 
@@ -112,6 +113,7 @@
                                                                     href="{{url('cancel',$services->id)}}">رفض  
                                                                     </a>  
                                                             </td>
+                                                        @endcan
                                                         </tr>
 
                                                         

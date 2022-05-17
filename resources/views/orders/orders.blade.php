@@ -88,7 +88,7 @@
             <div class="card mg-b-20">
                 <div class="card-header pb-0">
                         <a href="orders/create" class="modal-effect btn btn-sm btn-primary" style="color:white"><i
-                                class="fas fa-plus"></i>&nbsp; طلب خدمة </a>  
+                                class="fas fa-plus"></i>&nbsp; شراء خدمة </a>  
                                 
                         <a class="modal-effect btn btn-sm btn-primary" href="{{ url('export_orders') }}"
                             style="color:white"><i class="fas fa-file-download"></i>&nbsp;تصدير اكسيل</a>
@@ -99,30 +99,28 @@
                         <table id="example1" class="table key-buttons text-md-nowrap" data-page-length='50'style="text-align: center">
                             <thead>
                                 <tr>
-                                    <th class="wd-15p border-bottom-0">#</th>
+                                    
                                     <th class="wd-15p border-bottom-0">رقم الطلب  </th>
                                     <th class="wd-20p border-bottom-0">تاريخ الطلب </th>
                                     <th class="wd-15p border-bottom-0">تاريخ التسليم</th>
                                     <th class="wd-15p border-bottom-0"> القسم </th>
-                                    <th class="wd-20p border-bottom-0">الخدمة </th>                                      
+                                    <th class="wd-20p border-bottom-0">الخدمة </th>  
+                                    <th class="wd-20p border-bottom-0">حالة الخدمة </th>                                  
                                     <th class="wd-15p border-bottom-0"> الإجراءات</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @php
-                                $i = 0;
-                                @endphp
+                               
                                 @foreach ($orders as $order)
-                                    @php
-                                    $i++;
-                                    @endphp
+                                   
                                     <tr>
-                                        <td>{{ $i }}</td>
+                                       
                                         <td>{{ $order->order_number }} </td>
                                         <td>{{ $order->order_Date }}</td>
                                         <td>{{ $order->Due_Date }}</td>
                                         <td>{{ $order->section->name }}</td>
-                                        <td>{{ $order->service }}</td>
+                                        <td>{{ $order->service->name}}</td>
+                                        <td>{{ $order->OrderStatus}}</td>
                                         <td>
                                         <div class="dropdown">
                                                 <button aria-expanded="false" aria-haspopup="true" class="btn ripple btn-primary"
