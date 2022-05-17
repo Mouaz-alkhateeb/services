@@ -13,7 +13,7 @@
 							<a class="close-toggle" href="#"><i class="header-icons fe fe-x"></i></a>
 						</div>
 						<div class="main-header-center mr-3 d-sm-none d-md-none d-lg-block">
-							<input class="form-control" placeholder="Search for anything..." type="search"> <button class="btn"><i class="fas fa-search d-none d-md-block"></i></button>
+							<input class="form-control" placeholder="بحث..." type="search"> <button class="btn"><i class="fas fa-search d-none d-md-block"></i></button>
 						</div>
 					</div>
 					<div class="main-header-right">
@@ -21,7 +21,7 @@
 							<div class="nav-link" id="bs-example-navbar-collapse-1">
 								<form class="navbar-form" role="search">
 									<div class="input-group">
-										<input type="text" class="form-control" placeholder="Search">
+										<input type="text" class="form-control" placeholder="بحث">
 										<span class="input-group-btn">
 											<button type="reset" class="btn btn-default">
 												<i class="fas fa-times"></i>
@@ -101,12 +101,7 @@
 
 
 								</div>
-							</div>
-							<div class="dropdown main-header-message right-toggle">
-								<a class="nav-link pr-0" data-toggle="sidebar-left" data-target=".sidebar-left">
-									<svg xmlns="http://www.w3.org/2000/svg" class="header-icon-svgs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-menu"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
-								</a>
-							</div>
+							</div>							
 						</div>
 					</div>
 				</div>

@@ -96,7 +96,7 @@ class AdminController extends Controller
         ->datasets([
             [
                 'backgroundColor' => ['#019267','#FD5D5D','#EA5C2B'],
-                'data' => [$nspa1,$nspa2 ,$nspa3]
+                'data' => [$nspa2,$nspa1 ,$nspa3]
             ]
         ])
         ->options([]);
