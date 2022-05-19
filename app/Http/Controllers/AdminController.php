@@ -48,9 +48,9 @@ class AdminController extends Controller
         $services=services::select('*')->where('status','=','فعالة')->count();
         $providers = User::select('*')->where('roles_name', '["provider"]')->count();
         $orders=orders::count();
-        $Fullfilled_orders=orders::where('Value_OrderStatus',1)->count();
-        $UnFullfilled_Orders=orders::where('Value_OrderStatus',2)->count();
-        $Partially_Fullfilled_Orders=orders::where('Value_OrderStatus',3)->count();
+        $Fullfilled_orders=orders::where('Value_OrderStatus',1)->count();    
+        $Partially_Fullfilled_Orders=orders::where('Value_OrderStatus',2)->count();
+        $UnFullfilled_Orders=orders::where('Value_OrderStatus',3)->count();
 
         $nspa1 = round(($orders != 0) ? ($Fullfilled_orders / $orders * 100) : 0);
         $nspa2 = round(($orders != 0) ? ($Partially_Fullfilled_Orders / $orders * 100) : 0);

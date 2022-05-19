@@ -59,10 +59,10 @@ class OrdersController extends Controller
             'service_id' => $request->service_id,  
             'section_id' => $request->Section,
             'Amount_collection' => $request->Amount_collection,
-            'OrderStatus' => 'غير منفذ',
-            'Value_OrderStatus' => 2,
+            'OrderStatus' => 'معلق ',
+            'Value_OrderStatus' => 0,
             'PaymentStatus' => 'غير مدفوع',
-            'Value_PaymentStatus' => 2,
+            'Value_PaymentStatus' =>3,       
             'user' => (Auth::user()->name),
             'note' => $request->note,
         ]);
@@ -72,7 +72,6 @@ class OrdersController extends Controller
             $image = $request->file('pic');
             $file_name = $image->getClientOriginalName();
             $order_number = $request->order_number;
-
             $attachments = new Attachments_order();
             $attachments->file_name = $file_name;
             $attachments->order_number = $order_number;
@@ -115,7 +114,6 @@ class OrdersController extends Controller
         $sections=sections::all();
         return view('orders.edit_order',compact('orders','sections'));
     }
-
     /**
      * Update the specified resource in storage.
      *
@@ -149,42 +147,28 @@ class OrdersController extends Controller
         $id = $request->order_id;
         $orders = orders::where('id', $id)->first();
         $Details = Attachments_order::where('order_id', $id)->first();
-
         $id_page =$request->id_page;
-
         if (!$id_page==2) {
-
-        if (!empty($Details->order_number)) {
-
+        if (!empty($Details->order_number)) 
+        {
             Storage::disk('public_uploads')->deleteDirectory($Details->order_number);
         }
-
         $orders->forceDelete();
         session()->flash('delete_order');
         return redirect('/orders');
-
         }
-
         else {
 
             $orders->delete();
             session()->flash('archive_order');
             return redirect('/orders');
         }
-
-
     }
-
-
-
     public function getservices($id)
     {
         $services = DB::table("services")->where('section_id', $id)->pluck('name','id');      
         return json_encode($services);  
     }
-
-
-
     public function destroyfile(Request $request)
     {
         $order = Attachments_order::findOrFail($request->id_file);
@@ -193,16 +177,12 @@ class OrdersController extends Controller
         session()->flash('delete', 'تم حذف المرفق بنجاح');
         return back();  
     }
-
     public function open_file($order_number,$file_name)
-
     {
         $files = Storage::disk('public_uploads')->getDriver()->getAdapter()->applyPathPrefix($order_number.'/'.$file_name);
         return response()->file($files);
     }
-
     public function download_file($order_number,$file_name)
-
     {
         $down = Storage::disk('public_uploads')->getDriver()->getAdapter()->applyPathPrefix($order_number.'/'.$file_name);
         return response()->download($down);
@@ -215,27 +195,25 @@ class OrdersController extends Controller
     public function status_update($id ,Request $request)
     {
         $orders = orders::findOrFail($id);
-
-        if ($request->PaymentStatus === 'مدفوع' && $request->OrderStatus === 'منفذ') {
-
+        if ($request->PaymentStatus === 'مدفوع' && $request->OrderStatus === 'منفذ')
+         {
             $orders->update([
                 'Value_PaymentStatus' => 1,
                 'Value_OrderStatus' => 1,
                 'PaymentStatus' => $request->PaymentStatus,
                 'OrderStatus' => $request->OrderStatus,
-                'Payment_Date' => $request->Payment_Date,
-                
+                'Payment_Date' => $request->Payment_Date, 
             ]);
         }
-        else {
+        else
+        {
             $orders->update([
-                'Value_PaymentStatus' => 3,
-                'Value_OrderStatus' => 3,
+                'Value_PaymentStatus' => 2,
+                'Value_OrderStatus' =>2,
                 'PaymentStatus' => $request->PaymentStatus,
                 'OrderStatus' => $request->OrderStatus,
                 'Payment_Date' => $request->Payment_Date,
-            ]);
-           
+            ]); 
         }
         session()->flash('status_update');
         return redirect('/orders');
@@ -246,18 +224,33 @@ class OrdersController extends Controller
        $orders=orders::where('Value_OrderStatus',1)->get();
        return view('orders.Fullfilled_Orders',compact('orders'));
     }
-    public function UnFullfilled_Orders()
-    {
-       $orders=orders::where('Value_OrderStatus',2)->get();
-       return view('orders.UnFullfilled_Orders',compact('orders'));
-    }
     public function Partially_Fullfilled_Orders()
     {
-       $orders=orders::where('Value_OrderStatus',3)->get();
+       $orders=orders::where('Value_OrderStatus',2)->get();
        return view('orders.Partially_Fullfilled_Orders',compact('orders'));
     }
+    public function UnFullfilled_Orders()
+    {
+       $orders=orders::where('Value_OrderStatus',3)->get();
+       return view('orders.UnFullfilled_Orders',compact('orders'));
+    }
+    
     public function export()
     {
        return Excel::download(new OrdersExport, 'orders.xlsx');
+    }
+    public function ApprovalOrder($id)
+    {
+       $data=orders::find($id);
+       $data->OrderStatus='غير منفذ';
+       $data->Value_OrderStatus='3';
+       $data->save();
+       return back();
+    }
+    public function CancelOrder($id)
+    {
+        $service = orders::findOrFail($id);
+        $service->delete();
+        return redirect('/services');
     }
 }

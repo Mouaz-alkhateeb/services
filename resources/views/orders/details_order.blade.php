@@ -94,18 +94,21 @@
                                                             <th scope="row">المستفيد </th>                                                       
                                                             <td>{{ $order->user }}</td>
                                                             <th scope="row">حالة الطلب </th>
-
-                                                            @if ($order->Value_OrderStatus == 1)
+                                                            @if ($order->Value_OrderStatus == 0)
+                                                                <td><span
+                                                                        class="badge badge-pill badge-danger">{{ $order->OrderStatus }}</span>
+                                                                </td>
+                                                            @elseif ($order->Value_OrderStatus == 1)
                                                                 <td><span
                                                                         class="badge badge-pill badge-success">{{ $order->OrderStatus }}</span>
                                                                 </td>
                                                             @elseif($order->Value_OrderStatus ==2)
                                                                 <td><span
-                                                                        class="badge badge-pill badge-danger">{{ $order->OrderStatus }}</span>
+                                                                        class="badge badge-pill badge-warning">{{ $order->OrderStatus }}</span>
                                                                 </td>
                                                             @else
                                                                 <td><span
-                                                                        class="badge badge-pill badge-warning">{{ $order->OrderStatus }}</span>
+                                                                        class="badge badge-pill badge-danger">{{ $order->OrderStatus }}</span>
                                                                 </td>
                                                             @endif
                                                             <th scope="row">حالة الدفع </th>
@@ -116,19 +119,33 @@
                                                                 </td>
                                                             @elseif($order->Value_PaymentStatus ==2)
                                                                 <td><span
-                                                                        class="badge badge-pill badge-danger">{{ $order->PaymentStatus }}</span>
+                                                                        class="badge badge-pill badge-warning">{{ $order->PaymentStatus }}</span>
                                                                 </td>
                                                             @else
                                                                 <td><span
-                                                                        class="badge badge-pill badge-warning">{{ $order->PaymentStatus }}</span>
+                                                                        class="badge badge-pill badge-danger">{{ $order->PaymentStatus }}</span>
                                                                 </td>
-                                                            @endif
+                                                            @endif 
                                                         </tr>
                                                         <tr>
                                                             <th scope="row">سعر الخدمة</th>
                                                             <td>{{ $order->Amount_collection }}</td>
-                                                            <th scope="row">ملاحظات</th>
-                                                            <td>{{ $order->note }}</td>
+                                                        @can('قبول ورفض الطلبات')
+                                                            <th scope="row">إجراءات مقدم الخدمة</th>
+                                                            <td>
+                                                                    <a  class="btn btn-outline-success btn-sm " 
+                                                                    href="{{url('ApprovalOrder',$order->id)}}">قبول  
+                                                                    </a>  
+                                                                    <a  class="btn btn-outline-danger btn-sm " 
+                                                                    href="{{url('CancelOrder',$order->id)}}">رفض  
+                                                                    </a>  
+                                                            </td>  
+                                                        @endcan
+                                                        </tr>
+                                                        <tr>
+                                                        <th scope="row">ملاحظات</th>
+                                                            <td>{{ $order->note }}</td>     
+                                                        
                                                         </tr>
                                                     </tbody>
                                                 </table>

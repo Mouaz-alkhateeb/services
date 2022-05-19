@@ -82,7 +82,7 @@
                                 <select class="form-control" id="PaymentStatus" name="PaymentStatus" required>
                                     <option selected="true" disabled="disabled">-- حدد حالة الدفع --</option>
                                     <option value="مدفوع">مدفوع</option>
-                                    <option value="مدفوع جزئيا">مدفوع جزئيا </option>
+                                    <option value="مدفوع جزئيا">مدفوع جزئيا </option>                                         
                                 </select>
                             </div>
 
@@ -91,7 +91,7 @@
                                 <select class="form-control" id="OrderStatus" name="OrderStatus" required>
                                     <option selected="true" disabled="disabled">-- حدد حالة الطلب --</option>
                                     <option value="منفذ">منفذ</option>
-                                    <option value="قيد التنفيذ ">قيد التنفيذ  </option>
+                                    <option value="قيد التنفيذ">قيد التنفيذ  </option>
                                 </select>
                             </div>
 
@@ -140,6 +140,5 @@
         var date = $('.fc-datepicker').datepicker({
             dateFormat: 'yy-mm-dd'
         }).val();
-
     </script>
 @endsection

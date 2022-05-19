@@ -20,11 +20,11 @@ class ServicesController extends Controller
      */
     public function index()
     {
-        $providers= User::select('*')->where('roles_name','["provider"]')->get();
+       
         $sections = sections::all();
         $services = services::all();
         $sections2 = DB::table('sections')->whereNotNull('parent_id')->get();
-        return view('services.services', compact('sections', 'services', 'sections2','providers'));
+        return view('services.services', compact('sections', 'services', 'sections2'));
         
     }
 
@@ -50,7 +50,7 @@ class ServicesController extends Controller
             'name' => $request->name,
             'section_id' => $request->section_id,
             'description' => $request->description,
-            'service_provider_id' =>$request->provider_id,          
+            'service_provider_id' =>auth()->user()->id,    
             'status' => 'معلقة',
             'Value_status' => 2,
         ]);

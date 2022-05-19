@@ -26,10 +26,8 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/dashboard', 'AdminController@index')->name('dashboard');
 Route::get('/landing', 'AdminController@index2')->name('landing');
-
 Route::get('/auth/redirect/{provider}','Auth\SocialiteController@redirect');
 Route::get('/auth/callback/{provider}','Auth\SocialiteController@callback');
-
 Route::get('/chat', 'HomeController@index2')->name('chat');
 Route::get('/user', 'UserController@index2')->name('user')->middleware('PreventBackHistory');
 Route::get('/admin', 'AdminController@index')->name('admin')->middleware('PreventBackHistory');
@@ -65,15 +63,11 @@ Route::post('search_profits', 'ProfitsReportController@search_profits');
 Route::get('customers_report', 'CustomersReportController@index'); 
 Route::post('search_customers', 'CustomersReportController@search_customers'); 
 //Route::get('/provider/{id}', 'CustomersReportController@getservices');
-
+Route::get('/ApprovalOrder/{id}', 'OrdersController@ApprovalOrder');
+Route::get('/CancelOrder/{id}', 'OrdersController@CancelOrder');
 Route::group(['middleware' => ['auth']], function() {
     Route::resource('roles','RoleController');
     Route::resource('users','UserController');
    
     });
-
-
-
-
-
 Route::get('/{page}', 'AdminController@index');
