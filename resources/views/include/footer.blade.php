@@ -1,67 +1,41 @@
 <!-- ======= Footer ======= -->
-<footer>
+<footer dir="rtl" align="right">
     <div class="footer-area">
     <div class="container">
         <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-4" >
             <div class="footer-content">
-            <div class="footer-head">
-                <div class="footer-logo">
-                <h2><span>k</span>adamat</h2>
-                </div>
-
-                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis.</p>
-                <div class="footer-icons">
-                <ul>
-                    <li>
-                    <a href="#"><i class="bi bi-facebook"></i></a>
-                    </li>
-                    <li>
-                    <a href="#"><i class="bi bi-twitter"></i></a>
-                    </li>
-                    <li>
-                    <a href="#"><i class="bi bi-instagram"></i></a>
-                    </li>
-                    <li>
-                    <a href="#"><i class="bi bi-linkedin"></i></a>
-                    </li>
-                </ul>
-                </div>
+            <div class="footer-head" >
+                <h2> نسعى جاهدين لنكون</h2>
+                <p>منصة سورية تسويقية للغير في الجمهورية العربية السورية</p>
+                
             </div>
             </div>
         </div>
         <!-- end single footer -->
-        <div class="col-md-4">
+        <div class="col-md-4" >
             <div class="footer-content">
             <div class="footer-head">
-                <h4>information</h4>
-                <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.
-                </p>
-                <div class="footer-contacts">
-                <p><span>Tel:</span> +123 456 789</p>
-                <p><span>Email:</span> contact@example.com</p>
-                <p><span>Working Hours:</span> 9am-5pm</p>
-                </div>
+                <h1 >هدفنا</h1>
+                <span>
+                    تسهيل عملية الإتصال بين البائع والمشتري في سوريا ومساعدتك في الحصول على
+                     بائعين/مشتريين محتملين , بالإضافة إلى ضمان عملية تجارية سلسة وعادلة لكلا الطرفين
+               </span>
+            </div>
+            </div>
+        </div>
+        <div class="col-md-4" >
+            <div class="footer-content">
+            <div class="footer-head">
+                <h1>رؤيتنا</h1>
+                <span>
+                   من خلال الخبرة والدعم والمشورة , نهدف إلى تسهيل جميع الصفقات والعمليات الحسابية في سوريا من خلال اتخاذ جميع الإجراءات اللازمة لتقديم الأفضل ونسعى جاهدين لنكون رائدين في هذا المجال
+               </span>
             </div>
             </div>
         </div>
         <!-- end single footer -->
-        <div class="col-md-4">
-            <div class="footer-content">
-            <div class="footer-head">
-                <h4>Instagram</h4>
-                <div class="flicker-img">
-                <a href="#"><img src="assets2/img/portfolio/1.jpg" alt=""></a>
-                <a href="#"><img src="assets2/img/portfolio/2.jpg" alt=""></a>
-                <a href="#"><img src="assets2/img/portfolio/3.jpg" alt=""></a>
-                <a href="#"><img src="assets2/img/portfolio/4.jpg" alt=""></a>
-                <a href="#"><img src="assets2/img/portfolio/5.jpg" alt=""></a>
-                <a href="#"><img src="assets2/img/portfolio/6.jpg" alt=""></a>
-                </div>
-            </div>
-            </div>
-        </div>
+       
         </div>
     </div>
     </div>
@@ -69,19 +43,9 @@
     <div class="container">
         <div class="row">
         <div class="col-md-12 col-sm-12 col-xs-12">
-            <div class="copyright text-center">
-            <p>
-                &copy; Copyright <strong>eBusiness</strong>. All Rights Reserved
-            </p>
-            </div>
+           
             <div class="credits">
-            <!--
-            All the links in the footer should remain intact.
-            You can delete the links only if you purchased the pro version.
-            Licensing information: https://bootstrapmade.com/license/
-            Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=eBusiness
-            -->
-            Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+            <span>   جميع الحقوق محفوظة © 2022 </span>
             </div>
         </div>
         </div>

@@ -14,8 +14,6 @@ class AdminController extends Controller
         //هاد التابع مشان ما اقدر فوت عرابط الادمن بدون مصادقة وبدون ماكون ادمن
         $this->middleware(['auth', 'role:owner']);
     }
-
-
     public function index(){
         $percent = 0.1;
         $query = orders::where([
@@ -105,9 +103,6 @@ class AdminController extends Controller
         return view('home', compact('total','users','services','providers','orders','Fullfilled_orders','UnFullfilled_Orders','Partially_Fullfilled_Orders','nspa1','nspa2','nspa3','chartjs','chartjs2'));
     }
 
-
-
-    
     public function index2(){
         return view('landing');
     }
@@ -115,6 +110,7 @@ class AdminController extends Controller
     public function approval($id)
     {
        $data=services::find($id);
+       $data->provider->roles_name =='["provider"]';
        $data->status='فعالة';
        $data->value_status='1';
        $data->save();

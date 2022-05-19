@@ -25,12 +25,13 @@
                                 <a href="/auth/redirect/google" class="social"><i class="fab fa-google-plus-g"></i></a>
                                 <a href="/auth/redirect/github" class="social"><i class="fab fa-github"></i></a>
                             </div>
-                            <span>أو من خلال بريدك الالكتروني</span>
-                            <div class="form-group">
+                            <h6>أو من خلال بريدك الالكتروني</h6>
+                          
+                            <div class="form-group" >
                                 <i class="fas fa-envelope"></i>
                                 <input class="myInput @error('email') is-invalid @enderror" name="email"
                                     placeholder="البريد الالكتروني" type="email" id="email" value="{{ old('email') }}"
-                                    required autocomplete="email">
+                                    required autocomplete="email" >
                                 @error('email')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -49,25 +50,25 @@
                                 </span>
                                 @enderror
                             </div>
-                            <div class="form-group row">
+                            <div class="form-group row" align="right">
                                 <div class="col-md-6 offset-md-2">
                                     <div class="form-check">
                                         <input class="form-check-input" type="checkbox" name="remember" id="remember"
                                             {{ old('remember') ? 'checked' : '' }}>
 
                                         <label class="form-check-label" for="remember" style="color: #0299D1">
-                                            {{ __('Remember Me') }}
+                                            {{ __(' تذكرني') }}
                                         </label>
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-group row mb-0 offset-md-1">
-                                <div class="col-md-6">
+                            <div class="form-group row mb-0 offset-md-1" ">
+                                <div class="col-md-6" >
                                     <input type="submit" class="butt" value="دخول">
                                     @if (Route::has('password.request'))
                                     <a class="btn btn-link" href="{{ route('password.request') }}"
-                                        style="color: #0299D1">
-                                        {{ __('Forgot Your Password?') }}
+                                    style="color: #0299D1" >
+                                        {{ __('هل نسيت كلمة السر ؟') }}
                                     </a>
                                     @endif
                                 </div>
@@ -77,10 +78,12 @@
                 </div>
                 <div class=" col-md-6">
                     <div class="myRightCtn">
-                        <div class="box">
+                        <div class="box" align="right">
                         <header>مرحبا بكم</header>
-<p>منصة تتيح لأصحاب المشاريع والشركات التعاقد مع مقدمين خدمات محترفين </p>
-                            <input type="button" class="butt_out" value="لمعرفة المزيد" />
+                            <br>
+                            <h6>منصة تتيح لأصحاب المشاريع والشركات التعاقد مع مقدمين خدمات محترفين </h6>
+                            <br>
+                                <input type="button" class="butt_out" value="لمعرفة المزيد" />
                         </div>
 
                     </div>

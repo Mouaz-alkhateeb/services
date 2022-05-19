@@ -72,13 +72,14 @@
                         </form>
                     </div>
                 </div>
-                <div class="col-md-6">
+                <div class=" col-md-6">
                     <div class="myRightCtn">
-                        <div class="box">
-                            <header>مرحبا بكم</header>
-
-                            <p>منصة تتيح لأصحاب المشاريع والشركات التعاقد مع مقدمين خدمات محترفين </p>
-                            <input type="button" class="butt_out" value="لمعرفة المزيد" />
+                        <div class="box" align="right">
+                        <header>مرحبا بكم</header>
+                            <br>
+                            <h6>منصة تتيح لأصحاب المشاريع والشركات التعاقد مع مقدمين خدمات محترفين </h6>
+                            <br>
+                                <input type="button" class="butt_out" value="لمعرفة المزيد" />
                         </div>
 
                     </div>
