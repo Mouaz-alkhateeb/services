@@ -41,6 +41,9 @@ class LoginController extends Controller
         if($user -> hasRole('customer')){
             return redirect('/user');
         }
+        if($user -> hasRole('provider')){
+            return redirect('/user');
+        }
         
     }
     public function __construct()
