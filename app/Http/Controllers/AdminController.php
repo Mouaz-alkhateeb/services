@@ -12,7 +12,7 @@ class AdminController extends Controller
     public function __construct()
     {
         //هاد التابع مشان ما اقدر فوت عرابط الادمن بدون مصادقة وبدون ماكون ادمن
-        //$this->middleware(['auth', 'role:owner']);
+        $this->middleware(['auth', 'role:owner']);
     }
     public function index(){
         $percent = 0.1;
