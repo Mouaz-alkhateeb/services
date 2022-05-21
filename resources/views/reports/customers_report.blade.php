@@ -1,105 +1,83 @@
 @extends('layouts.master')
 @section('css')
-<!--- Internal Select2 css-->
-<link href="{{ URL::asset('assets/plugins/select2/css/select2.min.css') }}" rel="stylesheet">
-<!---Internal Fileupload css-->
-<link href="{{ URL::asset('assets/plugins/fileuploads/css/fileupload.css') }}" rel="stylesheet" type="text/css" />
-<!---Internal Fancy uploader css-->
-<link href="{{ URL::asset('assets/plugins/fancyuploder/fancy_fileupload.css') }}" rel="stylesheet" />
-<!--Internal Sumoselect css-->
-<link rel="stylesheet" href="{{ URL::asset('assets/plugins/sumoselect/sumoselect-rtl.css') }}">
-<!--Internal  TelephoneInput css-->
-<link rel="stylesheet" href="{{ URL::asset('assets/plugins/telephoneinput/telephoneinput-rtl.css') }}">
-@endsection
-@section('title')
-تقارير المستخدمين
-@stop
+    <!-- Internal Data table css -->
+    <link href="{{ URL::asset('assets/plugins/datatable/css/dataTables.bootstrap4.min.css') }}" rel="stylesheet" />
+    <link href="{{ URL::asset('assets/plugins/datatable/css/buttons.bootstrap4.min.css') }}" rel="stylesheet">
+    <link href="{{ URL::asset('assets/plugins/datatable/css/responsive.bootstrap4.min.css') }}" rel="stylesheet" />
+    <link href="{{ URL::asset('assets/plugins/datatable/css/jquery.dataTables.min.css') }}" rel="stylesheet">
+    <link href="{{ URL::asset('assets/plugins/datatable/css/responsive.dataTables.min.css') }}" rel="stylesheet">
+    <link href="{{ URL::asset('assets/plugins/select2/css/select2.min.css') }}" rel="stylesheet">
 
+    <!-- Internal Spectrum-colorpicker css -->
+    <link href="{{ URL::asset('assets/plugins/spectrum-colorpicker/spectrum.css') }}" rel="stylesheet">
+
+    <!-- Internal Select2 css -->
+    <link href="{{ URL::asset('assets/plugins/select2/css/select2.min.css') }}" rel="stylesheet">
+
+@section('title')
+  أرباح المستخدمين
+@stop
+@endsection
 @section('page-header')
 <!-- breadcrumb -->
 <div class="breadcrumb-header justify-content-between">
     <div class="my-auto">
         <div class="d-flex">
-            <h4 class="content-title mb-0 my-auto">تقارير المستخدمين </h4><span class="text-muted mt-1 tx-13 mr-2 mb-0">/
-                 الأرباح </span>
+            <h4 class="content-title mb-0 my-auto">التقارير</h4><span class="text-muted mt-1 tx-13 mr-2 mb-0">/ تقرير
+                أرباح المستخدمين</span>
         </div>
     </div>
 </div>
 <!-- breadcrumb -->
 @endsection
 @section('content')
-@if (session()->has('Add'))
-<div class="alert alert-success alert-dismissible fade show" role="alert">
-    <strong>{{ session()->get('Add') }}</strong>
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-    </button>
-</div>
+
+@if (count($errors) > 0)
+    <div class="alert alert-danger">
+        <button aria-label="Close" class="close" data-dismiss="alert" type="button">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <strong>خطا</strong>
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
 @endif
 
 <!-- row -->
-<div class="col-lg-12 col-md-12">
-    <div class="card">
-        <div class="card-body">
-            <form action="/search_customers" method="post" enctype="multipart/form-data" autocomplete="off">
-                {{ csrf_field() }}
-                {{-- 1 --}}
+<div class="row">
 
-                {{-- 2 --}}
-                <div class="row">
-                    <div class="col">
-                            <label for="inputName" class="control-label">القسم</label>
-                            <select name="provider_id" class="form-control SlectBox" onclick="console.log($(this).val())" onchange="console.log('change is firing')">
-                                <!--placeholder-->
-                                <option value="" selected disabled>حدد الاسم</option>
-                                @foreach ($providers as $provider)
-                                <option value="{{ $provider->id }}"> {{ $provider->name }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                </div>
-                {{-- 3 --}}
-               <br>
-                <div class="row">
-                        <div class="col-sm-1 col-md-1">
-                            <button type="submit" class="btn btn-primary btn-block">بحث</button>
-                        </div>
+    <div class="col-xl-12">
+        <div class="card mg-b-20">
+            <div class="card-header pb-0">
+                <form action="/search_customers" method="post" enctype="multipart/form-data" autocomplete="off">
+                    {{ csrf_field() }}
+                    <div class="row">
+                        <div class="col">
+                                <label for="inputName" class="control-label">القسم</label>
+                                <select name="provider_id" class="form-control SlectBox" onclick="console.log($(this).val())" onchange="console.log('change is firing')">
+                                    <!--placeholder-->
+                                    <option value="" selected disabled>حدد الاسم</option>
+                                    @foreach ($providers as $provider)
+                                    <option value="{{ $provider->id }}"> {{ $provider->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
                     </div>
-            </form>
-            <div class="row total" style=" background-color: #ccccb3 !important;padding: 14px;margin-top:5px;border-radius: 5px;">
-                    <div class="col">
-                        <label for="exampleTextarea">إجمالي الأرباح</label>
+                    <br>
+                    <div class="row">
+                            <div class="col-sm-1 col-md-1">
+                                <button type="submit" class="btn btn-primary btn-block">بحث</button>
+                            </div>
+                        </div>
                         <br>
-                        <span></span>
-
-                    </div>
-                </div><br>
+                </form>
+            </div>         
         </div>
-        <div class="card-body">
-                <div class="table-responsive">
-                        <table id="example" class="table key-buttons text-md-nowrap" style=" text-align: center">
-                            <thead>
-                                <tr>
-                                    <th class="wd-15p border-bottom-0">رقم الطلب  </th>
-                                    <th class="wd-20p border-bottom-0">تاريخ الطلب </th>
-                                    <th class="wd-15p border-bottom-0">تاريخ التسليم</th>
-                                    <th class="wd-20p border-bottom-0">الخدمة </th>                                      
-                                    <th class="wd-15p border-bottom-0"> الإجراءات</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                
-                            </tbody>
-                        </table>
-                </div>
-            </div>
     </div>
 </div>
-</div>
-
-
-</div>
-
 <!-- row closed -->
 </div>
 <!-- Container closed -->
@@ -107,36 +85,48 @@
 <!-- main-content closed -->
 @endsection
 @section('js')
-<!-- Internal Select2 js-->
-<script src="{{ URL::asset('assets/plugins/select2/js/select2.min.js') }}"></script>
-<!--Internal Fileuploads js-->
-<script src="{{ URL::asset('assets/plugins/fileuploads/js/fileupload.js') }}"></script>
-<script src="{{ URL::asset('assets/plugins/fileuploads/js/file-upload.js') }}"></script>
-<!--Internal Fancy uploader js-->
-<script src="{{ URL::asset('assets/plugins/fancyuploder/jquery.ui.widget.js') }}"></script>
-<script src="{{ URL::asset('assets/plugins/fancyuploder/jquery.fileupload.js') }}"></script>
-<script src="{{ URL::asset('assets/plugins/fancyuploder/jquery.iframe-transport.js') }}"></script>
-<script src="{{ URL::asset('assets/plugins/fancyuploder/jquery.fancy-fileupload.js') }}"></script>
-<script src="{{ URL::asset('assets/plugins/fancyuploder/fancy-uploader.js') }}"></script>
-<!--Internal  Form-elements js-->
-<script src="{{ URL::asset('assets/js/advanced-form-elements.js') }}"></script>
-<script src="{{ URL::asset('assets/js/select2.js') }}"></script>
-<!--Internal Sumoselect js-->
-<script src="{{ URL::asset('assets/plugins/sumoselect/jquery.sumoselect.js') }}"></script>
+<!-- Internal Data tables -->
+<script src="{{ URL::asset('assets/plugins/datatable/js/jquery.dataTables.min.js') }}"></script>
+<script src="{{ URL::asset('assets/plugins/datatable/js/dataTables.dataTables.min.js') }}"></script>
+<script src="{{ URL::asset('assets/plugins/datatable/js/dataTables.responsive.min.js') }}"></script>
+<script src="{{ URL::asset('assets/plugins/datatable/js/responsive.dataTables.min.js') }}"></script>
+<script src="{{ URL::asset('assets/plugins/datatable/js/jquery.dataTables.js') }}"></script>
+<script src="{{ URL::asset('assets/plugins/datatable/js/dataTables.bootstrap4.js') }}"></script>
+<script src="{{ URL::asset('assets/plugins/datatable/js/dataTables.buttons.min.js') }}"></script>
+<script src="{{ URL::asset('assets/plugins/datatable/js/buttons.bootstrap4.min.js') }}"></script>
+<script src="{{ URL::asset('assets/plugins/datatable/js/jszip.min.js') }}"></script>
+<script src="{{ URL::asset('assets/plugins/datatable/js/pdfmake.min.js') }}"></script>
+<script src="{{ URL::asset('assets/plugins/datatable/js/vfs_fonts.js') }}"></script>
+<script src="{{ URL::asset('assets/plugins/datatable/js/buttons.html5.min.js') }}"></script>
+<script src="{{ URL::asset('assets/plugins/datatable/js/buttons.print.min.js') }}"></script>
+<script src="{{ URL::asset('assets/plugins/datatable/js/buttons.colVis.min.js') }}"></script>
+<script src="{{ URL::asset('assets/plugins/datatable/js/dataTables.responsive.min.js') }}"></script>
+<script src="{{ URL::asset('assets/plugins/datatable/js/responsive.bootstrap4.min.js') }}"></script>
+<!--Internal  Datatable js -->
+<script src="{{ URL::asset('assets/js/table-data.js') }}"></script>
+
 <!--Internal  Datepicker js -->
 <script src="{{ URL::asset('assets/plugins/jquery-ui/ui/widgets/datepicker.js') }}"></script>
 <!--Internal  jquery.maskedinput js -->
 <script src="{{ URL::asset('assets/plugins/jquery.maskedinput/jquery.maskedinput.js') }}"></script>
 <!--Internal  spectrum-colorpicker js -->
 <script src="{{ URL::asset('assets/plugins/spectrum-colorpicker/spectrum.js') }}"></script>
+<!-- Internal Select2.min js -->
+<script src="{{ URL::asset('assets/plugins/select2/js/select2.min.js') }}"></script>
+<!--Internal Ion.rangeSlider.min js -->
+<script src="{{ URL::asset('assets/plugins/ion-rangeslider/js/ion.rangeSlider.min.js') }}"></script>
+<!--Internal  jquery-simple-datetimepicker js -->
+<script src="{{ URL::asset('assets/plugins/amazeui-datetimepicker/js/amazeui.datetimepicker.min.js') }}"></script>
+<!-- Ionicons js -->
+<script src="{{ URL::asset('assets/plugins/jquery-simple-datetimepicker/jquery.simple-dtpicker.js') }}"></script>
+<!--Internal  pickerjs js -->
+<script src="{{ URL::asset('assets/plugins/pickerjs/picker.min.js') }}"></script>
 <!-- Internal form-elements js -->
 <script src="{{ URL::asset('assets/js/form-elements.js') }}"></script>
 <script>
     var date = $('.fc-datepicker').datepicker({
         dateFormat: 'yy-mm-dd'
     }).val();
+
 </script>
-
-
-
 @endsection

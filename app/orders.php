@@ -15,13 +15,8 @@ class orders extends Model
     {
     return $this->belongsTo('App\sections');
     }
-   
-
-
-    
     public function service()
     {
         return $this->belongsTo('App\services');
     }
-   
 }

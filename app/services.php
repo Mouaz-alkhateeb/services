@@ -12,14 +12,11 @@ class services extends Model
     {
         return $this->belongsTo('App\sections');
     }
-
     public function provider()
     {
         return $this->hasOne('App\User', 'id', 'service_provider_id');
     }
-
-
-    public function orders()
+    public function order()
     {
         return $this->hasMany('App\orders');
     }
