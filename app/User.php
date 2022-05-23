@@ -42,4 +42,8 @@ protected $fillable = [
     {
         return $this->hasMany('services');
     }
+    public function orders()
+    {
+        return $this->hasMany('orders');
+    }
     }

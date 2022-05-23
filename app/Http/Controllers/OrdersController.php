@@ -63,7 +63,7 @@ class OrdersController extends Controller
             'Value_OrderStatus' => 0,
             'PaymentStatus' => 'غير مدفوع',
             'Value_PaymentStatus' =>3,       
-            'user' => (Auth::user()->name),
+            'customer_id' => (Auth::user()->id),
             'note' => $request->note,
         ]);
         if ($request->hasFile('pic')) {

@@ -38,8 +38,7 @@ class CustomersReportController extends Controller
          "OrderStatus",
          "Value_OrderStatus",
          "PaymentStatus",
-        "Value_PaymentStatus",
-        "user",
+        "Value_PaymentStatus",       
         "note",
         "Payment_Date"
     );

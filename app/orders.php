@@ -19,4 +19,8 @@ class orders extends Model
     {
         return $this->belongsTo('App\services');
     }
+    public function customer()
+    {
+        return $this->belongsTo('App\User');
+    }
 }

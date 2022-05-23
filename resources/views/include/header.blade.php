@@ -11,16 +11,16 @@
 
     <nav id="navbar" class="navbar">
         <ul>
-        <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
-        <li><a class="nav-link scrollto" href="#about">About</a></li>
-        <li><a class="nav-link scrollto" href="#services">Services</a></li>
-        <li class="dropdown"><a href="#">section <i class="bi bi-chevron-down"></i></a>
+        <li><a class="nav-link scrollto active" href="#hero">الصفحة الرئيسية</a></li>
+        <li><a class="nav-link scrollto" href="#about">حول خدمات</a></li>
+        <li><a class="nav-link scrollto" href="#services">خدماتنا</a></li>
+        <li class="dropdown"><a href="#">الأقسام <i class="bi bi-chevron-down"></i></a>
             <ul>
             <li><a href="#portfolio">Portfolio</a></li>
             <li><a href="#team">super provider</a></li>
             </ul>
         </li>
-        <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+        <li><a class="nav-link scrollto" href="#contact">تواصل معنا</a></li>
         <li class="dropdown"><a href="#">GO START <i class="bi bi-chevron-down"></i></a>
             <ul>
                 <li><a  href="{{ route('login') }}">تسجيل الدخول</a></li>

@@ -27,7 +27,6 @@ class ProfitsReportController extends Controller
          "Value_OrderStatus",
          "PaymentStatus",
          "Value_PaymentStatus",
-         "user",
          "note",
          "Payment_Date"
       );

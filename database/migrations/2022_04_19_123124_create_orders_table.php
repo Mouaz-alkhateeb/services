@@ -28,7 +28,8 @@ class CreateOrdersTable extends Migration
             $table->integer('Value_OrderStatus');  
             $table->string('PaymentStatus', 50);
             $table->integer('Value_PaymentStatus');
-            $table->string('user', 999);
+            $table->unsignedBigInteger('customer_id');
+            $table->foreign('customer_id')->references('id')->on('users')->onDelete('cascade');
             $table->text('note')->nullable();
             $table->date('Payment_Date')->nullable();//تاريخ الدفع
             $table->softDeletes();

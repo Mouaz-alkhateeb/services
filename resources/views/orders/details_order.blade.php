@@ -92,7 +92,7 @@
                                                             <th scope="row">الخدمة</th>
                                                             <td>{{ $order->service->name }}</td>
                                                             <th scope="row">المستفيد </th>                                                       
-                                                            <td>{{ $order->user }}</td>
+                                                            <td>{{ $order->customer->name}}</td>
                                                             <th scope="row">حالة الطلب </th>
                                                             @if ($order->Value_OrderStatus == 0)
                                                                 <td><span

@@ -33,6 +33,7 @@ Route::get('/user', 'UserController@index2')->name('user')->middleware('PreventB
 Route::get('/admin', 'AdminController@index')->name('admin')->middleware('PreventBackHistory');
 Route::get('/auth/redirect/{provider}','Auth\SocialiteController@redirect');
 Route::get('/auth/callback/{provider}','Auth\SocialiteController@callback');
+
 Route::resource('sections', 'SectionsController');
 Route::get('/subsections/{id}', 'SectionsController@getSubSections');
 Route::resource('services', 'ServicesController');
@@ -62,7 +63,6 @@ Route::get('profits_report', 'ProfitsReportController@index');
 Route::post('search_profits', 'ProfitsReportController@search_profits');   
 Route::get('customers_report', 'CustomersReportController@index'); 
 Route::post('search_customers', 'CustomersReportController@search_customers'); 
-//Route::get('/provider/{id}', 'CustomersReportController@getservices');
 Route::get('/ApprovalOrder/{id}', 'OrdersController@ApprovalOrder');
 Route::get('/CancelOrder/{id}', 'OrdersController@CancelOrder');
 Route::group(['middleware' => ['auth']], function() {
@@ -70,4 +70,9 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('users','UserController');
    
     });
+Route::resource('messagesBox','ContactController');
+Route::resource('contacts','ContactController');
+Route::post('contacts_form', 'ContactController@store'); 
+Route::get('/message_details/{id}', 'ContactController@show');
+
 Route::get('/{page}', 'AdminController@index');

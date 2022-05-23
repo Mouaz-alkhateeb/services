@@ -52,26 +52,50 @@
 									<div id="unreadNotifications">
 										@foreach (auth()->user()->unreadNotifications as $notification)	
 										<div class="main-notification-list Notification-scroll">
-											<a class="d-flex p-3 border-bottom" href="{{ url('details_service') }}/{{ $notification->data['id'] }}">
-												<div class="notifyimg bg-pink">
-													<i class="la la-file-alt text-white"></i>
-												</div>
-												<div class="mr-3">
-													<h5 class="notification-label mb-1">
-														{{ $notification->data['title'] }}
-														{{ $notification->data['user'] }}
-													</h5>
-													<div class="notification-subtext">{{ $notification->created_at }}</div>
-												</div>
-												<div class="mr-auto" >
-													<i class="las la-angle-left text-left text-muted"></i>
-												</div>
-											</a>
+										    @if(strpos($notification->type,"Add_service") !== false)
+												<a class="d-flex p-3 border-bottom" href="{{ url('details_service') }}/{{ $notification->data['id'] }}">
+											@elseif(strpos($notification->type,"Add_order") !== false)
+											    <a class="d-flex p-3 border-bottom" href="{{ url('details_order') }}/{{ $notification->data['id'] }}">
+											@else
+											    <a class="d-flex p-3 border-bottom" href="{{ url('message_details') }}/{{ $notification->data['id'] }}">
+											@endif	
+													<div class="notifyimg bg-pink">
+														<i class="la la-file-alt text-white"></i>
+													</div>
+													<div class="mr-3">
+														<h5 class="notification-label mb-1">
+															{{ $notification->data['title'] }}
+															{{ $notification->data['user'] }}
+														</h5>
+														<div class="notification-subtext">{{ $notification->created_at }}</div>
+													</div>
+													<div class="mr-auto" >
+														<i class="las la-angle-left text-left text-muted"></i>
+													</div>
+												</a>
 										</div>	
 										@endforeach
 									</div>
 								</div>
 							</div>
+							<div class="main-header-message ">
+                                <a  href="{{url('/messagesBox')}}" class="new nav-link">
+								<svg xmlns="http://www.w3.org/2000/svg" class="header-icon-svgs"
+								viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+								stroke-linecap="round" stroke-linejoin="round">
+								<path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+								<polyline points="22,6 12,13 2,6"></polyline></svg><span class=" pulse-danger"></span></a>
+                           </div>
+
+						   <div class="main-header-message ">
+                                <a  href="{{ url('/chat') }}"  fill="none" class="btn btn-sm btn-light">
+								  <i class="fab fa-facebook-messenger" ></i>
+								</a>
+                           </div>
+
+
+
+							
 							<div class="nav-item full-screen fullscreen-button">
 								<a class="new nav-link full-screen-link" href="#"><svg xmlns="http://www.w3.org/2000/svg" class="header-icon-svgs" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-maximize"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path></svg></a>
 							</div>

@@ -12,7 +12,7 @@ class AdminController extends Controller
     public function __construct()
     {
         //هاد التابع مشان ما اقدر فوت عرابط الادمن بدون مصادقة وبدون ماكون ادمن
-        $this->middleware(['auth', 'role:owner']);
+        //$this->middleware(['auth', 'role:owner']);
     }
     public function index(){
         $percent = 0.1;
@@ -31,7 +31,6 @@ class AdminController extends Controller
            "Value_OrderStatus",
            "PaymentStatus",
            "Value_PaymentStatus",
-           "user",
            "note",
            "Payment_Date"
         );
@@ -110,7 +109,7 @@ class AdminController extends Controller
     public function approval($id)
     {
        $service=services::find($id);
-       $service->provider->roles_name=["provider"];
+       $service->provider->roles_name=["provider"];       
        $service->provider->save();
        $service->status='فعالة';
        $service->value_status='1';
@@ -124,4 +123,4 @@ class AdminController extends Controller
         return redirect('/services');
     }
 }
-
+ 

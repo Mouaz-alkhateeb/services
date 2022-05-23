@@ -18,6 +18,7 @@ class SectionsController extends Controller
     {
         $sections=sections::where('parent_id',null)->get();
         return view('sections.sections',compact('sections'));
+        return view('include.footer',compact('sections'));
        
     }
     
@@ -135,6 +136,11 @@ class SectionsController extends Controller
         $sections2=sections::where('parent_id',null)->get();
         $subsections=DB::table('sections')->where('parent_id',$id)->get();
         return view('sections.subsections',compact('subsections','sections','sections2'));
+    }
+    public function index2()
+    {
+        $sections=sections::where('parent_id',null)->get();
+        return view('include.footer',compact('sections'));
     }
     
     

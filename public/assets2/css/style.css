@@ -215,7 +215,7 @@
 
     .sec-head {
     display: inline-block;
-    font-size: 17px;
+    font-size: 30px;
     font-weight: 600;
     margin-bottom: 0;
     padding: 0 0 10px;
@@ -618,7 +618,7 @@
     .single-well ul li i {
     color: #3EC1D5;
     margin-right: 5px;
-    font-size: 18px;
+    font-size: 30px;
     }
 
     .single-well p {
