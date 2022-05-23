@@ -53,6 +53,9 @@
                                                             <td>{{ $contacts->title }}</td>     
                                                         </tr>
                                                         <tr>
+
+
+                                                        
                                                             <th scope="row"><span class="badge badge-pill badge-success"> محتوى الرسالة</span></th>
                                                             <td>{{ $contacts->content }}</td>     
                                                         </tr>
